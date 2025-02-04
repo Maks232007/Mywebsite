@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории мест</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .buttons {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .place-card {
+            width: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .place-card-inner {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .place-card:hover .place-card-inner {
+            transform: rotateY(180deg);
+        }
+        .place-card-front, .place-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .place-card-front {
+            background-color: white;
+        }
+        .place-card-back {
+            background-color: #333;
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .place-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .place-info {
+            padding: 15px;
+        }
+        .place-name {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .place-description {
+            font-size: 14px;
+            color: #666;
+        }
+        .place-card-back p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .place-card-back ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .place-card-back ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <button onclick="filterCategory('restaurant')">Ресторан</button>
+        <button onclick="filterCategory('cafe')">Кафе</button>
+        <button onclick="filterCategory('museum')">Музей</button>
+        <button onclick="filterCategory('pool')">Бассейн</button>
+    </div>
+
+    <div class="container">
+        <!-- Карточки мест -->
+        <div class="place-card restaurant">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Ozen.jpg" alt="Restaurant" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Ozen</h2>
+                        <p class="place-description">Часы работы: 08:00 - 22:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Ресторан Озен известен своим вниманием к качеству продуктов и эксклюзивному обслуживанию. Местные жители и туристы часто выбирают его для особых событий благодаря стильному оформлению и разнообразному меню.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card restaurant">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Riba-Pila.jpg" alt="Restaurant" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Riba-Pila</h2>
+                        <p class="place-description">Часы работы: 12:00 - 00:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Он идеально подходит для деловых встреч, романтических ужинов и семейных мероприятий. В меню часто можно найти авторские блюда, приготовленные из свежих и высококачественных ингредиентов.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card restaurant">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Saksaul.jpg" alt="Restaurant" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Saksaul</h2>
+                        <p class="place-description">Часы работы: 09:00 - 00:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Saksaul привлекает как местных жителей, так и туристов, благодаря качественному обслуживанию и аутентичной атмосфере, где каждый гость может насладиться вкусом настоящей казахской кухни.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card restaurant">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Satti.jpg" alt="Restaurant" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Satti</h2>
+                        <p class="place-description">Часы работы: 11:00 - 00:30</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Ресторан идеально подходит для семейных встреч, деловых обедов и торжеств, предлагая удобные условия и внимательное обслуживание. Satti ценится за свою атмосферу уюта и тепла, где каждый гость чувствует себя особенным.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card restaurant">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Zina.jpg" alt="Restaurant" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Zina</h2>
+                        <p class="place-description">Часы работы: 11:00 - 00:30</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>В ресторане Zina можно найти широкий выбор блюд, от классических казахских угощений до международных кулинарных направлений, что привлекает как местных жителей, так и туристов. Ресторан известен своим вниманием к качеству ингредиентов, свежести продуктов и авторским подходом к приготовлению блюд. Меню предлагает не только сытные мясные блюда, но и легкие закуски, салаты, а также десерты.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card cafe">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/koktem.jpg" alt="Cafe" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">koktem</h2>
+                        <p class="place-description">Часы работы: 07:00 - 21:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p> В меню можно найти разнообразные блюда, такие как бешбармак, манты, казы, а также другие национальные деликатесы, приготовленные с использованием свежих и качественных ингредиентов.
+
+                        Ресторан Коктем ценится за внимательное обслуживание и высокое качество еды, что делает его популярным выбором среди местных жителей и гостей города.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card cafe">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Rafe.jpg" alt="Cafe" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Rafe</h2>
+                        <p class="place-description">Часы работы: 07:00 - 21:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Заведение известно своей утонченной атмосферой, стильным интерьером и вниманием к деталям, создающими идеальную обстановку для различных мероприятий — от романтических ужинов до деловых встреч.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card cafe">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Bon-bon.jpg" alt="Cafe" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Bon-bon</h2>
+                        <p class="place-description">Часы работы: 07:00 - 21:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Меню ресторана Bon-bon включает разнообразие блюд, как из казахской, так и из международной кухни. Здесь можно попробовать как традиционные казахские угощения, так и современные авторские блюда, приготовленные из свежих и качественных ингредиентов. Особое внимание уделяется десертам, которые стали визитной карточкой заведения, а также фирменным напиткам.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card cafe">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Cofe Boom.jpg" alt="Cafe" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Cofe Boom</h2>
+                        <p class="place-description">Часы работы: 07:00 - 21:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Меню Cofe Boom включает широкий выбор кофе, начиная от классического эспрессо и латте, заканчивая авторскими напитками и различными десертами. В кофейне также подают чай, соки и легкие закуски, что делает ее отличным местом для перекуса или встреч с друзьями.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card cafe">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Bar.jpg" alt="Cafe" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Экспрессо Бар</h2>
+                        <p class="place-description">Часы работы: 07:00 - 21:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Меню Экспрессо Бар включает разнообразные кофейные напитки: эспрессо, латте, капучино, американо, а также авторские кофейные смеси. Кофейня также предлагает широкий выбор чаев, свежих соков и легких закусок — идеальных для перекуса или в качестве дополнения к кофе.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card museum">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/National.jpg" alt="Museum" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">National Museum of Kazakhstan</h2>
+                        <p class="place-description">Часы работы: 09:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Национальный музей Казахстана в Астане — это крупнейший музей страны, представляющий богатое культурное наследие Казахстана. Открытый в 2014 году, музей стал важным центром для изучения истории, культуры и искусства Казахстана и является одной из главных достопримечательностей города.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card museum">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/History.jpg" alt="Museum" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Kazakhstan Military History Museum</h2>
+                        <p class="place-description">Часы работы: 09:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Музей военной истории Казахстана в Астане — это специализированный музей, посвященный военной истории Казахстана и его вооруженным силам. Открытый в 2017 году, музей представляет собой важный культурный и образовательный центр, который знакомит посетителей с военной историей страны, начиная с древности и заканчивая современным периодом.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card museum">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/saken-seifullin-museum.jpg" alt="Museum" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Saken-seifullin-museum</h2>
+                        <p class="place-description">Часы работы: 09:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Музей Сакена Сейфуллина — это музей, посвященный жизни и творчеству выдающегося казахского писателя, поэта, общественного деятеля и культурного лидера Сакена Сейфуллина. Музей расположен Астане и является важным культурным объектом, отражающим значимость личности Сейфуллина для казахстанской литературы и истории.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card museum">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/caption.jpg" alt="Museum" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Президентский центр культуры Республики Казахстан</h2>
+                        <p class="place-description">Часы работы: 09:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Президентский центр культуры является важным культурным объектом в столице Казахстана, предоставляя пространство для культурного обмена, обучения и творчества. Это место, где сочетаются традиции и современные культурные течения, а также площадка для развития и популяризации искусства и культуры страны.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card museum">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/photo0jpg.jpg" alt="Museum" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Куланши</h2>
+                        <p class="place-description">Часы работы: 09:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Название "Куланши" происходит от казахского слова, обозначающего старинное украшение, используемое в традиционном казахском костюме, что символизирует связь с культурным наследием и национальными традициями. .</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card pool">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/oaziz.jpg" alt="Pool" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Оазис</h2>
+                        <p class="place-description">Часы работы: 06:00 - 20:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Бассейн "Оазис" отличается уютной атмосферой и качественным обслуживанием, что делает его отличным местом для посещения как для тренировок, так и для расслабляющего времяпрепровождения.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card pool">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/AILAND.jpg" alt="Pool" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">AILAND</h2>
+                        <p class="place-description">Часы работы: 06:00 - 20:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Аквапарк в Ailand предлагает широкий выбор аттракционов, включая водные горки для детей и взрослых, а также просторные бассейны с подогревом. Здесь есть зоны для активного плавания, а также места для расслабления, например, джакузи и сауны. Комплекс включает в себя как крытые бассейны, так и открытые зоны для отдыха в теплое время года.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card pool">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Basein.jpg" alt="Pool" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Жастар сарайы</h2>
+                        <p class="place-description">Часы работы: 06:00 - 20:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Этот бассейн часто используется для занятий плаванием, водной аэробикой и спортивными тренировками, а также для рекреационного плавания. Здесь могут тренироваться как взрослые, так и дети, так как предусмотрены различные зоны и глубины для удобства всех посетителей. Кроме того, в Жастар сарайы проводятся уроки плавания с опытными инструкторами.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card pool">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/Бассейн.jpg" alt="Pool" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Детский бассейн во «Дворце школьников»</h2>
+                        <p class="place-description">Часы работы: 06:00 - 20:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>В Дворце школьников заботятся о безопасности маленьких посетителей, поэтому бассейн оборудован современными системами очистки воды и плавными наклонными стенками, что делает его удобным и безопасным для детских занятий. Здесь проводятся уроки плавания, водная аэробика для детей, а также различные спортивные мероприятия и развлекательные программы, направленные на развитие физической активности.</p>
+                </div>
+            </div>
+        </div>
+        <div class="place-card pool">
+            <div class="place-card-inner">
+                <div class="place-card-front">
+                    <img src="image/алатау.jpg" alt="Pool" class="place-image">
+                    <div class="place-info">
+                        <h2 class="place-name">Спорткомплекс «Алатау»</h2>
+                        <p class="place-description">Часы работы: 06:00 - 20:00</p>
+                    </div>
+                </div>
+                <div class="place-card-back">
+                    <p>Бассейн Спорткомплекса «Алатау» отличается высокими стандартами безопасности и комфорта. Он подходит как для спортивных тренировок, так и для рекреационного плавания. Здесь можно заниматься плаванием, водной аэробикой и другими водными видами спорта. Комплекс также предоставляет удобные условия для детей, благодаря специальным зонам с мелкой водой и профессиональным инструкторам, которые проводят уроки плавания.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.place-card');
+            cards.forEach(card => {
+                card.style.display = card.classList.contains(category) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
